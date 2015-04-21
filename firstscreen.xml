@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/"
+    android:weightSum="1"
+    android:textAlignment="center">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="My Screen"
+        android:id="@+id/et_sn"
+        android:height="@dimen/abc_action_bar_stacked_tab_max_width"
+        android:background="#ff77ecff"
+        android:clickable="false" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Enter user name"
+        android:ems="10"
+        android:id="@+id/et_name"
+        android:autoText="false"
+        android:singleLine="false"
+        android:textSize="20dp"
+        android:textColor="#ffff38af"
+        android:layout_weight="0.09"
+        android:shadowColor="#ffff7f28"
+        android:background="#ffceff5f" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/et_pass"
+        android:layout_weight="0.08"
+        android:text="Enter password" />
+
+    <Button
+        android:layout_width="105dp"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/bt_sub"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.02"
+        android:textColor="#ff333eff" />
+</LinearLayout>
