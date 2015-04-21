@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/"
+    android:id="@+id/ln"
     android:weightSum="1"
     android:textAlignment="center">
 
@@ -14,7 +14,8 @@
         android:id="@+id/et_sn"
         android:height="@dimen/abc_action_bar_stacked_tab_max_width"
         android:background="#ff77ecff"
-        android:clickable="false" />
+        android:clickable="false"
+        android:gravity="center_horizontal" />
 
     <EditText
         android:layout_width="match_parent"
