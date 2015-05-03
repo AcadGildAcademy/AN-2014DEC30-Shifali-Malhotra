@@ -4,7 +4,9 @@
     android:layout_height="match_parent"
     android:id="@+id/ln"
     android:weightSum="1"
-    android:textAlignment="center">
+    android:textAlignment="center"
+    android:baselineAligned="false"
+    android:clickable="false">
 
     <TextView
         android:layout_width="match_parent"
@@ -21,16 +23,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Enter user name"
         android:ems="10"
         android:id="@+id/et_name"
         android:autoText="false"
         android:singleLine="false"
         android:textSize="20dp"
         android:textColor="#ffff38af"
-        android:layout_weight="0.09"
+        android:layout_weight="0.10"
         android:shadowColor="#ffff7f28"
-        android:background="#ffceff5f" />
+        android:background="#ffceff5f"
+        android:accessibilityLiveRegion="@integer/abc_max_action_buttons"
+        android:hint="enter user name" />
 
     <EditText
         android:layout_width="match_parent"
@@ -38,8 +41,9 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/et_pass"
-        android:layout_weight="0.08"
-        android:text="Enter password" />
+        android:background="#ff0fff8b"
+        android:layout_weight="0.10"
+        android:hint="enter password" />
 
     <Button
         android:layout_width="105dp"
@@ -48,5 +52,17 @@
         android:id="@+id/bt_sub"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.02"
-        android:textColor="#ff333eff" />
+        android:textColor="#ff333eff"
+        android:focusableInTouchMode="false"
+        android:elegantTextHeight="false"
+        android:clickable="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New User Click"
+        android:id="@+id/bt_new"
+        android:layout_gravity="center_horizontal"
+        android:textAppearance="@android:color/holo_orange_dark" />
+
 </LinearLayout>
