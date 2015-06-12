@@ -3,6 +3,7 @@ package com.example.abc.main_project;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 
@@ -24,15 +25,13 @@ import android.widget.TextView;
             String name = (String)in.get(TAG_MOVIE_TITLE);
             String date = (String)in.get(TAG_RELEASE_DATE);
 
-
             // Displaying all values on the screen
             TextView lblName = (TextView) findViewById(R.id.tv_movie_title);
             TextView lbldate = (TextView) findViewById(R.id.tv_release_date);
 
-
             lblName.setText(name);
             lbldate.setText(date);
-   //setRating
+
         }
     }
 

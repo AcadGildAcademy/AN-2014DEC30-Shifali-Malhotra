@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
@@ -30,27 +31,32 @@ public class main_activity extends ListActivity {
 
     private ProgressDialog pDialog;
 
-
+ ListView lv;
 
     private static String url = "http://api.themoviedb.org/3/movie/popular?api_key=8496be0b2149805afa458ab8ec27560c";
     // JSON Node names
-    private static final String TAG_RESULT="results";
-    private static final String TAG_ID = "id";
-    private static final String TAG_TITLE = "title";
-    private static final String TAG_RELEASE_DATE = "release_date";
-    private static final String TAG_POPULARITY="popularity";
-    private static final String TAG_RATING="vote_average";
+    static final String TAG_RESULT="results";
+  static final String TAG_ID = "id";
+
+ static final String TAG_TITLE = "title";
+   static final String TAG_RELEASE_DATE = "release_date";
+     static final String TAG_POPULARITY="popularity";
+     static final String TAG_RATING="vote_average";
     JSONArray results=null;
 
-    // Hashmap for ListView
-    ArrayList<HashMap<String,String>> movie_list = new ArrayList<HashMap<String,String>>();
+    /* Hashmap for ListView */
+    ArrayList<HashMap<String,String>> movie_list;
+
+    public main_activity() {
+        movie_list = new ArrayList<>();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        setContentView(R.layout.activity_main);
 
-        ListView lv = getListView();
+       lv = getListView();
 
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -59,15 +65,16 @@ public class main_activity extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
 
-                String name = ((TextView) view.findViewById(R.id.name))
+               /* String name = ((TextView) view.findViewById(R.id.name))
                         .getText().toString();
                 String date = ((TextView) view.findViewById(R.id.date))
                         .getText().toString();
+                RatingBar rating=(RatingBar)view.findViewById(R.id.rating_movie);*/
 
 
                 Intent in = new Intent(getApplicationContext(),Singlemovieactivity.class);
-                in.putExtra(TAG_TITLE, name);
-                in.putExtra(TAG_RELEASE_DATE, date);
+                in.putExtra(TAG_TITLE, movie_list.get(position).get(TAG_TITLE));
+                in.putExtra(TAG_RELEASE_DATE,movie_list.get(position).get(TAG_RELEASE_DATE));
 
                 startActivity(in);
 
@@ -114,13 +121,15 @@ public class main_activity extends ListActivity {
                         String id = m.getString(TAG_ID);
                         String name = m.getString(TAG_TITLE);
                         String date = m.getString(TAG_RELEASE_DATE);
+                        String rating=m.getString(TAG_RATING);
+
         //retrieve rating value and assign the int variable and divide by 2
 
                         result = new HashMap<String, String>();
                         result.put(TAG_ID, id);
                         result.put(TAG_TITLE, name);
                         result.put(TAG_RELEASE_DATE, date);
-
+                        result.put(TAG_RATING,rating);
                         ///assign rating value to hash map object reference
 
                         movie_list.add(result);
@@ -143,14 +152,18 @@ public class main_activity extends ListActivity {
                 if (pDialog.isShowing())
                     pDialog.dismiss();
 
-                ListAdapter adapter = new SimpleAdapter(
+               /* ListAdapter adapter = new SimpleAdapter(
                         main_activity.this, movie_list,
-                        R.layout.list_item, new String[]{TAG_TITLE, TAG_RELEASE_DATE,  //Have rating Tag defined here too
+                        R.layout.list_item, new String[]{TAG_TITLE, TAG_RELEASE_DATE, String.valueOf(TAG_RATING)  //Have rating Tag defined here too
                 }, new int[]{
-                        R.id.name, R.id.date}); //add rating id
+                        R.id.name, R.id.date,R.id.rating_movie}); //add rating id
 
-                setListAdapter(adapter);
-            }
+                setListAdapter(adapter);*/
+    MyAdapter adapter=new MyAdapter(main_activity.this,movie_list);
+    lv.setAdapter(adapter);
+
+
+}
 
         }
 
